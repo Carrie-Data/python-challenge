@@ -14,10 +14,11 @@ with open(PollCSV, 'r') as csvfile:
     #Create empty list
     candidate = []
 
+    #Calculate the number of votes ie rows.
     Poll_data = list(csvreader)
     Votes = len(Poll_data)
 
-
+    #Find all the candidates that where voted for.
     for i in range(Votes):
         if Poll_data[i][2] not in candidate:
             candidate.append(Poll_data[i][2])
@@ -25,23 +26,26 @@ with open(PollCSV, 'r') as csvfile:
    
     vote_count = []
   
+    #Find how many candidates where voted for
     for person in candidate:
         vote_count.append(0)
 
     num_candidate = len(candidate)
  
+    #Find out how many votes each candidate got.
     for i in range(Votes):
         for j in range(num_candidate):
             if Poll_data[i][2] == candidate[j]:
                 vote_count[j] = vote_count[j] + 1
 
    
-
+    #Calculate Percentage of votes per candidate
     percentage = []
-
+    
     for candidate_vote in vote_count:
         percentage.append(candidate_vote/Votes)
 
+    #Find max votes and thereby the winner
     max_votes = max(vote_count)
     
     winner = candidate[vote_count.index(max_votes)]
