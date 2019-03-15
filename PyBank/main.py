@@ -10,24 +10,29 @@ with open(BudgetCSV, 'r') as csvfile:
     # Split the data on commas
     csvreader = csv.reader(csvfile, delimiter=',')
 
+    #Calculate Months
     header = next(csvreader)
     data = list(csvreader)
     months= int(len(data))
 
+    #Set initial value/initialize a few variables
     total_profit = 0
     total_change = 0
     min_profit = int(data[1][1]) -int(data[0][1])
     max_profit = int(data[1][1]) -int(data[0][1])
 
+    #Calculate total profit
     for row in data:
         total_profit += int(row[1]) 
 
+    #Calculate the total change in profit from month to month
     for i in range(months - 1):
         top_price = int(data[i][1]) 
         bottom_price = int(data[i + 1][1])
         change= bottom_price - top_price
         total_change += change
 
+        #In the same loop examime to change in profit to find the max and min change.
         if change < min_profit:
             min_profit = change
             month_min_profit = data[i + 1][0]
@@ -36,6 +41,7 @@ with open(BudgetCSV, 'r') as csvfile:
             max_profit = change
             month_max_profit = data[i + 1][0]
 
+    #Calculate average change
     average = total_change/(months - 1)
     average = ("{0:.2f}".format(average))
   
