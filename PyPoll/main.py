@@ -59,10 +59,10 @@ with open(PollCSV, 'r') as csvfile:
     print("-------------------------")
     print(f"Total Votes: {Votes}")
     print("-------------------------")
-    print(candidate[0] +": "+ str(f_percent[0]) +" ("+ str(vote_count[0]) + ")")
-    print(candidate[1] + ": "+ str(f_percent[1]) +" ("+ str(vote_count[1]) + ")")
-    print(candidate[2] + ": "+ str(f_percent[2]) +" (" + str(vote_count[2]) + ")")
-    print(candidate[3] + ": "+ str(f_percent[3]) +" (" + str(vote_count[3]) + ")")
+
+    for x in range(num_candidate):
+        print(candidate[x] +": "+ str(f_percent[x]) +" ("+ str(vote_count[x]) + ")")
+        
     print("-------------------------")  
     print(f"Winner:  {winner}")
     print("-------------------------")
