@@ -2,7 +2,7 @@ import os
 import csv
 
 # Path to collect data from the Resources folder
-BudgetCSV = os.path.join('.', 'Resources', 'budget_data.csv')
+BudgetCSV = os.path.join('.', 'budget_data.csv')
 
 # Read in the CSV file
 with open(BudgetCSV, 'r') as csvfile:
